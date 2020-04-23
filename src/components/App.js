@@ -18,12 +18,16 @@ const App = () => {
     setNameFilter(data.value);
   };
 
+  const filteredCharacters = characters.filter((character) => {
+    return character.name.toUpperCase().includes(nameFilter.toUpperCase());
+  });
+
   return (
     <>
       <h1 className='title--big'>Rick and Morty</h1>
       <div className='.display-block'>
         <Filters handlerFilter={handlerFilter} />
-        <CharacterList characters={characters} />
+        <CharacterList characters={filteredCharacters} />
         <CharacterDetail />
       </div>
     </>
