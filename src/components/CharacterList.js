@@ -1,17 +1,13 @@
 import React from 'react';
 import CharacterCard from '../components/CharacterCard';
 
-const CharacterList = () => {
+const CharacterList = (props) => {
+  const characterElements = props.characters.map((character) => {
+    return <CharacterCard key={character.id} character={character} />;
+  });
   return (
     <section>
-      <ul className='cards'>
-        <CharacterCard />
-        <CharacterCard />
-        <CharacterCard />
-        <CharacterCard />
-        <CharacterCard />
-        <CharacterCard />
-      </ul>
+      <ul className='cards'>{characterElements}</ul>
     </section>
   );
 };

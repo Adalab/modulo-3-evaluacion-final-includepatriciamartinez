@@ -1,10 +1,14 @@
 import React from 'react';
+import FilterByName from '../components/FilterByName';
 
 const Filters = () => {
+  const handlerChange = (ev) => {
+    console.log(ev.type, ev.target.value);
+  };
   return (
     <section>
       <form>
-        <input className='form__input-text' type='text' name='name' id='name' />
+        <FilterByName />
       </form>
     </section>
   );

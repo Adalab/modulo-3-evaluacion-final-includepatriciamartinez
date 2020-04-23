@@ -1,11 +1,12 @@
 import React from 'react';
 
-const CharacterCard = () => {
+const CharacterCard = (props) => {
   return (
     <li className='card'>
-      <img className='card__img' src='https://rickandmortyapi.com/api/character/avatar/361.jpeg' alt='character pic'></img>
-      <h4 className='card__title'>Woman Rick</h4>
-      <p className='card__description'>Alien</p>
+      <img className='card__img' src={props.character.image} alt={`${props.character.name} pic`} title={`${props.character.name} pic`}></img>
+      <h4 className='card__title'>{props.character.name}</h4>
+      <p className='card__description'>{props.character.species}</p>
+      <p className='card__description'>{props.character.origin}</p>
     </li>
   );
 };
