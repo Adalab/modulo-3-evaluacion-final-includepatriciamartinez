@@ -1,13 +1,16 @@
 import React from 'react';
 
-const FilterByName = () => {
+const FilterByName = (props) => {
   const handlerChange = (ev) => {
-    console.log(ev.type, ev.target.value);
+    props.handlerFilter({
+      value: ev.target.value,
+      key: 'name',
+    });
   };
   return (
-    <>
+    <form>
       <input className='form__input-text' type='text' name='name' id='name' onChange={handlerChange} />
-    </>
+    </form>
   );
 };
 

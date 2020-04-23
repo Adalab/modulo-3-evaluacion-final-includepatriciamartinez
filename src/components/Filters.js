@@ -1,15 +1,10 @@
 import React from 'react';
 import FilterByName from '../components/FilterByName';
 
-const Filters = () => {
-  const handlerChange = (ev) => {
-    console.log(ev.type, ev.target.value);
-  };
+const Filters = (props) => {
   return (
     <section>
-      <form>
-        <FilterByName />
-      </form>
+      <FilterByName handlerFilter={props.handlerFilter} />
     </section>
   );
 };
