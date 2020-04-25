@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const CharacterDetail = (props) => {
   return (
@@ -25,6 +26,10 @@ const CharacterDetail = (props) => {
       </div>
     </div>
   );
+};
+
+CharacterDetail.propTypes = {
+  character: PropTypes.object,
 };
 
 export default CharacterDetail;
