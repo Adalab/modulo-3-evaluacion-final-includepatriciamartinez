@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import CharacterList from '../components/CharacterList';
-import Filters from './Filters';
 import CharacterDetail from './CharacterDetail';
+import Home from '../components/Home';
 import getApiData from '../services/getApiData';
 
 const App = () => {
@@ -41,9 +40,10 @@ const App = () => {
     <>
       <h1 className='title--big'>Rick and Morty</h1>
       <div className='.display-block'>
-        <Filters handlerFilter={handlerFilter} />
-        <CharacterList characters={filteredCharacters} />
         <Switch>
+          <Route exact path='/'>
+            <Home handlerFilter={handlerFilter} characters={filteredCharacters} />
+          </Route>
           <Route path='/character/:characterId' render={renderCharacterDetail} />
         </Switch>
       </div>
