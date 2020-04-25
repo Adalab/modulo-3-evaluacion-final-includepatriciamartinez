@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import CharacterList from '../components/CharacterList';
 import Filters from './Filters';
 import CharacterDetail from './CharacterDetail';
@@ -14,13 +15,27 @@ const App = () => {
   }, []);
 
   //event handler
+
   const handlerFilter = (data) => {
     setNameFilter(data.value);
   };
 
+  //render
+
   const filteredCharacters = characters.filter((character) => {
     return character.name.toUpperCase().includes(nameFilter.toUpperCase());
   });
+
+  const renderCharacterDetail = (props) => {
+    const characterId = props.match.params.characterId;
+
+    const foundCharacter = characters.find((character) => {
+      return character.id === parseInt(characterId);
+    });
+    if (foundCharacter !== undefined) {
+      return <CharacterDetail character={foundCharacter} />;
+    }
+  };
 
   return (
     <>
@@ -28,7 +43,9 @@ const App = () => {
       <div className='.display-block'>
         <Filters handlerFilter={handlerFilter} />
         <CharacterList characters={filteredCharacters} />
-        <CharacterDetail />
+        <Switch>
+          <Route path='/character/:characterId' render={renderCharacterDetail} />
+        </Switch>
       </div>
     </>
   );

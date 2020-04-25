@@ -7,9 +7,13 @@ const FilterByName = (props) => {
       key: 'name',
     });
   };
+
+  const handlerSubmit = (ev) => {
+    ev.preventDefault();
+  };
   return (
-    <form>
-      <input className='form__input-text' type='text' name='name' id='name' onChange={handlerChange} />
+    <form onSubmit={handlerSubmit}>
+      <input className='form__input-text' type='text' name='name' id='name' placeholder='Search your character here...' onChange={handlerChange} />
     </form>
   );
 };
