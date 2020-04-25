@@ -3,12 +3,10 @@ import Filters from '../components/Filters';
 import CharacterList from '../components/CharacterList';
 
 const Home = (props) => {
-  console.log(props);
-
   return (
     <div>
-      <Filters handlerFilter={props.handlerFilter} />
-      <CharacterList characters={props.characters} />
+      <Filters handlerFilter={props.handlerFilter} value={props.value} />
+      <CharacterList characters={props.characters} value={props.value} />
     </div>
   );
 };

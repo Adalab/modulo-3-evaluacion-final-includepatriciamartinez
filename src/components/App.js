@@ -42,7 +42,7 @@ const App = () => {
       <div className='.display-block'>
         <Switch>
           <Route exact path='/'>
-            <Home handlerFilter={handlerFilter} characters={filteredCharacters} />
+            <Home handlerFilter={handlerFilter} characters={filteredCharacters} value={nameFilter} />
           </Route>
           <Route path='/character/:characterId' render={renderCharacterDetail} />
         </Switch>

@@ -4,7 +4,7 @@ import FilterByName from '../components/FilterByName';
 const Filters = (props) => {
   return (
     <section>
-      <FilterByName handlerFilter={props.handlerFilter} />
+      <FilterByName handlerFilter={props.handlerFilter} value={props.value} />
     </section>
   );
 };
