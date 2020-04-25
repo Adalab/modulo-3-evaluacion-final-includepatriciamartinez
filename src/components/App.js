@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import CharacterDetail from './CharacterDetail';
 import Home from '../components/Home';
 import getApiData from '../services/getApiData';
+import '../stylesheets/App.css';
 
 const App = () => {
   const [characters, setCharacters] = useState([]);
@@ -39,7 +40,7 @@ const App = () => {
   return (
     <>
       <h1 className='title--big'>Rick and Morty</h1>
-      <div className='.display-block'>
+      <div className='display-block'>
         <Switch>
           <Route exact path='/'>
             <Home handlerFilter={handlerFilter} characters={filteredCharacters} value={nameFilter} />

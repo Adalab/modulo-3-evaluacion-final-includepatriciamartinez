@@ -1,6 +1,7 @@
 import React from 'react';
 import CharacterCard from '../components/CharacterCard';
 import PropTypes from 'prop-types';
+import '../stylesheets/App.css';
 
 const CharacterList = (props) => {
   if (props.characters.length > 0) {
