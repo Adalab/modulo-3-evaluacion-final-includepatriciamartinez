@@ -27,6 +27,8 @@ const App = () => {
   });
 
   const renderCharacterDetail = (props) => {
+    console.log(props);
+
     const characterId = props.match.params.characterId;
 
     const foundCharacter = characters.find((character) => {

@@ -17,3 +17,15 @@
   padding: 1rem;
   background: black;
 }
+
+.form__input-text {
+  width: 30vw;
+  margin: 0.25rem;
+  padding: 0.3rem;
+  background-color: #ddd;
+  border: none;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  outline: none;
+  vertical-align: middle;
+}
