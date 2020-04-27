@@ -8,23 +8,42 @@ import '../stylesheets/App.css';
 const App = () => {
   const [characters, setCharacters] = useState([]);
   const [nameFilter, setNameFilter] = useState('');
+  const [genderFilter, setGenderFilter] = useState('All');
+
   useEffect(() => {
     getApiData().then((data) => {
       setCharacters(data);
     });
   }, []);
 
-  //event handler
+  //events handlers
 
   const handlerFilter = (data) => {
-    setNameFilter(data.value);
+    if (data.key === 'name') {
+      setNameFilter(data.value);
+    } else {
+      setGenderFilter(data.value);
+    }
   };
 
   //render
 
-  const filteredCharacters = characters.filter((character) => {
-    return character.name.toUpperCase().includes(nameFilter.toUpperCase());
-  });
+  const filteredCharacters = characters
+    .filter((character) => {
+      return character.name.toUpperCase().includes(nameFilter.toUpperCase());
+    })
+    .filter((character) => {
+      console.log(character.gender, genderFilter);
+
+      return genderFilter === 'All' ? true : genderFilter === character.gender;
+
+      /*if (genderFilter === 'All') {
+        return true;
+      } else {
+        return character.gender === genderFilter;
+      }*/
+    });
+  console.log(filteredCharacters);
 
   const renderCharacterDetail = (props) => {
     const characterId = props.match.params.characterId;
