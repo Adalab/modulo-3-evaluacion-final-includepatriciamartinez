@@ -9,6 +9,7 @@ const App = () => {
   const [characters, setCharacters] = useState([]);
   const [nameFilter, setNameFilter] = useState('');
   const [genderFilter, setGenderFilter] = useState('All');
+  const [episodeFilter, setEpisodeFilter] = useState('');
 
   useEffect(() => {
     getApiData().then((data) => {
@@ -21,20 +22,20 @@ const App = () => {
   const handlerFilter = (data) => {
     if (data.key === 'name') {
       setNameFilter(data.value);
-    } else {
+    } else if (data.key === 'gender') {
       setGenderFilter(data.value);
+    } else {
+      setEpisodeFilter(data.value);
     }
   };
 
   //render
-
   const filteredCharacters = characters
+
     .filter((character) => {
       return character.name.toUpperCase().includes(nameFilter.toUpperCase());
     })
     .filter((character) => {
-      console.log(character.gender, genderFilter);
-
       return genderFilter === 'All' ? true : genderFilter === character.gender;
 
       /*if (genderFilter === 'All') {
@@ -42,8 +43,14 @@ const App = () => {
       } else {
         return character.gender === genderFilter;
       }*/
+    })
+    .filter((character) => {
+      if (episodeFilter === '') {
+        return true;
+      } else {
+        return parseInt(episodeFilter) === parseInt(character.episode.length);
+      }
     });
-  console.log(filteredCharacters);
 
   const renderCharacterDetail = (props) => {
     const characterId = props.match.params.characterId;

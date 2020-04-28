@@ -18,7 +18,7 @@ const FilterByGender = (props) => {
         <option value='All'>Todos</option>
         <option value='Female'>Mujer</option>
         <option value='Male'>Hombre</option>
-        <option value='Unknown'>Desconocido</option>
+        <option value='unknown'>Desconocido</option>
       </select>
     </form>
   );
