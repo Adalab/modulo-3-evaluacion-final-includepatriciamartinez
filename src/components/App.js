@@ -29,8 +29,6 @@ const App = () => {
 
   const filteredCharacters = characters
     .filter((character) => {
-      console.log(character.gender);
-
       return character.name.toUpperCase().includes(nameFilter.toUpperCase());
     })
     .filter((character) => {
