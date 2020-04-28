@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const FilterByName = (props) => {
+const FilterByGender = (props) => {
   const handlerChange = (ev) => {
     props.handlerFilter({
       value: ev.target.value,
-      key: 'name',
+      key: 'gender',
     });
   };
 
@@ -15,16 +15,21 @@ const FilterByName = (props) => {
   return (
     <form onSubmit={handlerSubmit}>
       <label className='form__label' htmlFor='character'>
-        Characters
+        Episodes number
       </label>
-      <input className='form__input-text' type='text' name='name' id='name' placeholder='Search your character here...' onChange={handlerChange} value={props.value} />
+      <select className='form__input-text' type='text' name='gender' id='gender' onChange={handlerChange}>
+        <option value='All'>All</option>
+        <option value='Female'>Female</option>
+        <option value='Male'>Male</option>
+        <option value='unknown'>Unknown</option>
+      </select>
     </form>
   );
 };
 
-FilterByName.propTypes = {
+FilterByGender.propTypes = {
   handlerFilter: PropTypes.func,
   value: PropTypes.string,
 };
 
-export default FilterByName;
+export default FilterByGender;
