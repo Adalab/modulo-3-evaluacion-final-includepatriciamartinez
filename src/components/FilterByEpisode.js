@@ -14,7 +14,7 @@ const FilterByEpisode = (props) => {
   };
   return (
     <form onSubmit={handlerSubmit}>
-      <label className='form__label' htmlFor='episodes'>
+      <label className='form__label' htmlFor='episode'>
         Episodes number
       </label>
       <input className='form__input-text' type='text' name='episode' id='episode' placeholder='Search your number episode here...' onChange={handlerChange} value={props.value} />

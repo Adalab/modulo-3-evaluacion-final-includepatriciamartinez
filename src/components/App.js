@@ -8,7 +8,7 @@ import '../stylesheets/App.css';
 const App = () => {
   const [characters, setCharacters] = useState([]);
   const [nameFilter, setNameFilter] = useState('');
-  const [episodeFilter, setEpisodeFilter] = useState('');
+  const [episodeFilter, setEpisodeFilter] = useState('0');
   useEffect(() => {
     getApiData().then((data) => {
       setCharacters(data);
@@ -20,7 +20,7 @@ const App = () => {
   const handlerFilter = (data) => {
     if (data.key === 'name') {
       setNameFilter(data.value);
-    } else if (data.key === 'episode') {
+    } else {
       setEpisodeFilter(data.value);
     }
   };
@@ -29,14 +29,13 @@ const App = () => {
 
   const filteredCharacters = characters
     .filter((character) => {
-      console.log(character.episode.length);
       return character.name.toUpperCase().includes(nameFilter.toUpperCase());
     })
     .filter((character) => {
       if (episodeFilter === '') {
         return true;
       } else {
-        return parseInt(episodeFilter) === character.episode.length;
+        return parseInt(episodeFilter) === parseInt(character.episode.length);
       }
     });
 
