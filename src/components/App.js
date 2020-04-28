@@ -24,17 +24,20 @@ const App = () => {
       setEpisodeFilter(data.value);
     }
   };
-  console.log('name:', nameFilter);
-  console.log('episode:', episodeFilter);
 
   //render
 
   const filteredCharacters = characters
     .filter((character) => {
+      console.log(character.episode.length);
       return character.name.toUpperCase().includes(nameFilter.toUpperCase());
     })
     .filter((character) => {
-      console.log(character);
+      if (episodeFilter === '') {
+        return true;
+      } else {
+        return parseInt(episodeFilter) === character.episode.length;
+      }
     });
 
   const renderCharacterDetail = (props) => {
